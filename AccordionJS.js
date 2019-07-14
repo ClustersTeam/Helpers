@@ -15,8 +15,6 @@
 
   var currentPanel = null
 
-  var childrenLinks = null
-
   /*
    *  Contructor
    *
@@ -29,8 +27,6 @@
 
     if (accordion !== null) {
       accordionPanels = accordion.querySelectorAll('.accordion__panel')
-
-      childrenLinks = accordion.querySelectorAll('a[href=""]')
 
       if (accordionPanels.length > 0) {
         init()
@@ -53,10 +49,6 @@
         .querySelector('.accordion__trigger-panel')
         .addEventListener('click', activateSelectedPanel)
     })
-
-    for (var i = 0; i < childrenLinks.length; i++) {
-      childrenLinks[i].addEventListener('click', activatePanelChildrenLinks)
-    }
   }
 
   /*
@@ -124,19 +116,6 @@
         return accordionPanels[i]
       }
     }
-  }
-
-  /*
-   * begin the activation process on selecting a panel content hash links
-   * @param  {Event} evt
-   * @return {Void}
-   */
-  function activatePanelChildrenLinks (evt) {
-    for (var i = 0; i < childrenLinks.length; ++i) {
-      childrenLinks[i].classList.remove('active')
-    }
-
-    evt.currentTarget.classList.add('active')
   }
 
   function findAncestor (el, cls) {
